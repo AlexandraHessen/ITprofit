@@ -203,7 +203,7 @@ class Form extends React.Component{
                 <div>
                     <label htmlFor="tel" className="LabelOrder">Телефон</label>
                     {/* <input type="text" name="tel" className="InputOrder" placeholder="+37529111-22-33" onChange={this.changeInput} onBlur={this.validate}></input> */}
-                    <InputMask {...this.props} mask="+4\9 99 999 99" type="text" name="tel" className="InputOrder"  onChange={this.changeInput} onBlur={this.validate}></InputMask>
+                    <InputMask {...this.props} mask="+375 99 999 99 99" type="text" name="tel" className="InputOrder"  onChange={this.changeInput} onBlur={this.validate}></InputMask>
                     {(this.state.telNotValid)&&<span className="Error">{this.state.telError}</span>} 
                 </div>
                 <div>
