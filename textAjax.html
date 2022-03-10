@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Ваше имя: <input type='text' id='IName'><br />
+Текст сообщения:<br />
+<input type='text' id='IMess' style='width: 300px'><br />
+<input type='button' value='отправить' onclick='sendMessage()'>
+<input type='button' value='освежить' onclick='refreshMessages()'><br />
+Окно чата:<br />
+<div id='IChat' style='border: solid red 1px; overflow-x: hidden'></div>
+
+<!-- --------------ОБЯЗАТЕЛЬНО JQUERY ------------------ -->
+<script src="http://fe.it-academy.by/JQ/jquery.js"></script>
+<script>
+
+"use strict";
+
+var ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
+var messages; // элемент массива - {name:'Иванов',mess:'Привет'};
+var updatePassword; //рандомный пароль
+var stringName='LOKTEV_CHAT_MESS';
+// "YAKOVLEVA_PLANTS_CATALOG"
+
+// ----------------------- ОТОБРАЖЕНИЕ ДАННЫХ НА СТРАНИЦЕ ----------------------- //
+// показывает все сообщения из messages на страницу
+function showMessages() {
+    var str='';
+    for ( var m=0; m<messages.length; m++ ) {
+        var message=messages[m];
+        str+="<b>"+escapeHTML(message.name)+":</b> "
+            +escapeHTML(message.mess)+"<br />";
+    }
+    document.getElementById('IChat').innerHTML=str;
+}
+
+// ----------------------- ПРОВЕРКА ----------------------- //
+function escapeHTML(text) {
+    if ( !text )
+        return text;
+    text=text.toString()
+        .split("&").join("&amp;")
+        .split("<").join("&lt;")
+        .split(">").join("&gt;")
+        .split('"').join("&quot;")
+        .split("'").join("&#039;");
+    return text;
+}
+
+
+// ----------------------- ЧТЕНИЕ ОТВЕТА С СЕРВЕРА ----------------------- //
+// висит на кнопке Освежить
+// вызывает readRedy которая проверяет 
+// и потом отображает ОБНОВЛЕННЫЕ данные через функцию ShowMesseges
+// получает сообщения с сервера и потом показывает
+function refreshMessages() {
+    $.ajax( {
+            url : ajaxHandlerScript,
+            type : 'POST', dataType:'json',
+            data : { f : 'READ', n : stringName },
+            cache : false,
+            success : readReady,
+            error : errorHandler
+        }
+    );
+}
+
+
+// ----------------------- ПРОВЕРКА ОБНОВЕННОГО ОТВЕТА С СЕРВЕРА ----------------------- //
+function readReady(callresult) { // сообщения получены - показывает
+    if ( callresult.error!=undefined )
+        alert(callresult.error);
+    else {
+        messages=[];
+        if ( callresult.result!="" ) { // либо строка пустая - сообщений нет
+            // либо в строке - JSON-представление массива сообщений
+            messages=JSON.parse(callresult.result);
+            // вдруг кто-то сохранил мусор вместо LOKTEV_CHAT_MESSAGES?
+            if ( !Array.isArray(messages) )
+                messages=[];
+        }
+        showMessages(); //потом вызываем функию отображения
+    }
+}
+
+// ----------------------- ПОЛУЧАЕМ ДАННЫЕ С СЕРВЕРА И БЛОКИРЕМ ИХ ----------------------- //
+// никто в данный момент не может вносить изменения
+// висит на Отправить
+// получает сообщения с сервера, добавляет новое,
+// показывает и сохраняет на сервере
+function sendMessage() {
+    updatePassword=Math.random(); //запераем строку рандомных паролем
+    $.ajax( {
+            url : ajaxHandlerScript,
+            type : 'POST', dataType:'json',
+            data : { f : 'LOCKGET', n : stringName,
+                p : updatePassword },
+            cache : false,
+            success : lockGetReady,
+            error : errorHandler
+        }
+    );
+}
+
+// ----------------------- ПРИСЫЛАЕТ НОВОЕ СОСТОЯНИЕ НА СЕРВЕР ----------------------- //
+// если были изменения не нами и инфа уже поменялась
+// сообщения получены, добавляет, показывает, сохраняет
+function lockGetReady(callresult) {
+    if ( callresult.error!=undefined )
+        alert(callresult.error);
+    else {
+        messages=[];
+        if ( callresult.result!="" ) { // либо строка пустая - сообщений нет
+            // либо в строке - JSON-представление массива сообщений
+            messages=JSON.parse(callresult.result);
+            // вдруг кто-то сохранил мусор вместо LOKTEV_CHAT_MESSAGES?
+            if ( !Array.isArray(messages) )
+                messages=[];
+        }
+
+// ----------------------- ДОБАВЛЯЕМ НАШИ НОВЫЕ СООБЩЕНИЯ  ----------------------- //
+// в самый конеч и обрезаем 10 последних
+        var senderName=document.getElementById('IName').value;
+        var message=document.getElementById('IMess').value;
+        messages.push( { name:senderName, mess:message } );
+        if ( messages.length>10 )
+            messages=messages.slice(messages.length-10);
+
+        showMessages();
+
+// ----------------------- ДОБАВЛЯЕМ НАШИ ДАННЫЕ К УЖЕ ИМЕЮЩИМСЯ----------------------- //
+// и сохраняем их на сервере и отпираем их, чтобы они уже были доступны
+        $.ajax( {
+                url : ajaxHandlerScript,
+                type : 'POST', dataType:'json',
+                data : { f : 'UPDATE', n : stringName,
+                    v : JSON.stringify(messages), p : updatePassword },
+                cache : false,
+                success : updateReady,
+                error : errorHandler
+            }
+        );
+    }
+}
+
+// сообщения вместе с новым сохранены на сервере
+function updateReady(callresult) {
+    if ( callresult.error!=undefined )
+        alert(callresult.error);
+}
+
+function errorHandler(jqXHR,statusStr,errorStr) {
+    alert(statusStr+' '+errorStr);
+}
+
+refreshMessages();
+
+</script>
+</body>
+</html>

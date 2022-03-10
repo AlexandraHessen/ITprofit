@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RowProductBasket  1`] = `
+<tr
+  className="RowProductBasket"
+>
+  <td>
+    <img
+      className="Img"
+      src="/img/img_9241_1.jpg"
+    />
+  </td>
+  <td
+    className="Name"
+  >
+    Замиокулькас
+  </td>
+  <td
+    className="Price"
+  >
+    265
+     руб.
+  </td>
+  <td>
+    <button
+      className="DelButton"
+      onClick={[Function]}
+      type="button"
+    >
+      <i
+        className="far fa-times-circle"
+      />
+    </button>
+  </td>
+</tr>
+`;

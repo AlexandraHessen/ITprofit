@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header 1`] = `
+<header
+  className="Header"
+>
+  <div
+    className="Info"
+  >
+    <div
+      className="Logo"
+    >
+      <span>
+        Plants
+      </span>
+      <img
+        className="ImgLogo"
+        src="/img/logo.png"
+      />
+    </div>
+    <div
+      className="Contacts"
+    >
+      <ul
+        className="Contacts"
+      >
+        <li>
+          +375 (29) 844-44-88
+        </li>
+        <li>
+          +375 (44) 888-44-88
+        </li>
+        <li>
+          Пн-Пт: 9:00-18:00
+        </li>
+        <li>
+          г.Минск, пр.Победителей, 65
+        </li>
+      </ul>
+    </div>
+    <a
+      aria-current={false}
+      className="BasketShowCount"
+      href="/basket"
+      onClick={[Function]}
+      style={undefined}
+    >
+      <button
+        className="ButtonToBasket"
+        type="button"
+      >
+        <i
+          className="fas fa-shopping-cart"
+        />
+        <div
+          className="CountProductsInBasket"
+        >
+          0
+        </div>
+      </button>
+    </a>
+  </div>
+  <div
+    className="Navigation"
+  >
+    <ul
+      className="MenuPages"
+    >
+      <li>
+        <a
+          aria-current={false}
+          className="PageLink"
+          href="/"
+          onClick={[Function]}
+          style={undefined}
+        >
+          Главная
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={false}
+          className="PageLink"
+          href="/catalog/1"
+          onClick={[Function]}
+          style={undefined}
+        >
+          Каталог
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={false}
+          className="PageLink"
+          href="/contacts"
+          onClick={[Function]}
+          style={undefined}
+        >
+          Контакты
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={false}
+          className="PageLink"
+          href="/basket"
+          onClick={[Function]}
+          style={undefined}
+        >
+          Корзина
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+`;

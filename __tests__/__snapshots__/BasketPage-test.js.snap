@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BasketPage  1`] = `
+<div
+  className="BasketPage"
+>
+  <h1>
+    Корзина
+  </h1>
+  <h3>
+    Корзина пуста.
+  </h3>
+</div>
+`;

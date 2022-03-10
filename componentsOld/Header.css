@@ -1,0 +1,43 @@
+.Header .Info{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+.Header .Logo{
+    font-family: 'Pattaya', sans-serif;
+    letter-spacing: 2px;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #fff;
+
+}
+
+.Header .ImgLogo{
+    width: 60px;
+}
+
+.Header .MenuPages{
+    display: flex;
+    justify-content: center; 
+    padding: 30px;
+}
+
+.Header .Contacts{
+
+}
+
+@media all and (max-width: 500px){
+    .Header .Contacts{
+        display: none;
+    }
+
+    .Header .Logo{
+        font-size: 2.5em;
+    }
+
+    .Header .ImgLogo{
+        width: 45px;
+    }
+
+}

@@ -1,0 +1,19 @@
+.ContactsPage{
+    padding: 15px;
+    background-color: #fff;
+}
+
+.ContactsPage h3{
+    padding: 10px;
+    margin: 0;
+} 
+
+.ContactsPage .Map{
+    width: 100%;
+}
+
+
+@media all and (max-width: 790px) {
+
+}
+

@@ -2,11 +2,18 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import InputMask from 'react-input-mask';
+import isoFetch from 'isomorphic-fetch';
+import { Prompt } from 'react-router';
+import {withRouter} from 'react-router';
 
-import './Form.css'
+import {connect} from 'react-redux';
+import {add_order} from '../redux/orderAC';
+import {clear_basket} from '../redux/basketAC';
+import {plantsEvents} from './events';
 
-class Form extends React.Component{
+import './Order.css'
+
+class Order extends React.PureComponent{
     state={
         name: '',
         surname: '',
@@ -37,7 +44,7 @@ class Form extends React.Component{
 
     changeInput = (EO) => {
         this.setState({[EO.target.name]: EO.target.value}, this.warn)
-        // plantsEvents.emit('EvNeedToWarn', true);
+        plantsEvents.emit('EvNeedToWarn', true);
     }
 
     validate = (EO) =>{
@@ -82,7 +89,7 @@ class Form extends React.Component{
     }
 
     addOrder=()=>{
-        // plantsEvents.emit('EvNeedToWarn', false);
+        plantsEvents.emit('EvNeedToWarn', false);
         let objCustomerInfo={        
             name: this.state.name,
             surname: this.state.surname,
@@ -127,7 +134,7 @@ class Form extends React.Component{
         this.props.dispatch( add_order( objCustomerInfo, this.props.basket.productsInBasket
                         ) );
         this.props.dispatch( clear_basket() );
-        // plantsEvents.emit('EvMadeOrder', true);
+        plantsEvents.emit('EvMadeOrder', true);
         
     }
 
@@ -185,10 +192,10 @@ class Form extends React.Component{
     render(){
         return(
             <div className="Order">
-                    {/* <Prompt
+                    <Prompt
                         when={this.state.isNeedToWarn}
                         message="Возможно, внесенные изменения не сохранятся."
-                    /> */}
+                    />
                 <h1>Оформление заказа:</h1>
                 <div>
                     <label htmlFor="name" className="LabelOrder">Имя</label>
@@ -196,18 +203,38 @@ class Form extends React.Component{
                     {(this.state.nameNotValid)&&<span className="Error">{this.state.nameError}</span>} 
                 </div>
                 <div>
-                    <label htmlFor="email" className="LabelOrder">Email</label>
-                    <input type="email" name="email" className="InputOrder" placeholder="email@gmail.com"onChange={this.changeInput} onBlur={this.validate}></input>
-                    {(this.state.emailNotValid)&&<span className="Error">{this.state.emailError}</span>} 
+                    <label htmlFor="surname" className="LabelOrder">Фамилия</label>
+                    <input type="text" name="surname" className="InputOrder" onChange={this.changeInput} onBlur={this.validate}></input>
+                    {(this.state.surnameNotValid)&&<span className="Error">{this.state.surnameError}</span>} 
                 </div>
                 <div>
                     <label htmlFor="tel" className="LabelOrder">Телефон</label>
-                    {/* <input type="text" name="tel" className="InputOrder" placeholder="+37529111-22-33" onChange={this.changeInput} onBlur={this.validate}></input> */}
-                    <InputMask {...this.props} mask="+4\9 99 999 99" type="text" name="tel" className="InputOrder"  onChange={this.changeInput} onBlur={this.validate}></InputMask>
+                    <input type="text" name="tel" className="InputOrder" placeholder="+37529111-22-33" onChange={this.changeInput} onBlur={this.validate}></input>
                     {(this.state.telNotValid)&&<span className="Error">{this.state.telError}</span>} 
                 </div>
                 <div>
-                    <label htmlFor="note" className="LabelOrder">Сообщение</label>
+                    <label htmlFor="email" className="LabelOrder">Email</label>
+                    <input type="text" name="email" className="InputOrder" placeholder="email@gmail.com"onChange={this.changeInput} onBlur={this.validate}></input>
+                    {(this.state.emailNotValid)&&<span className="Error">{this.state.emailError}</span>} 
+                </div>
+                <div>
+                    <label htmlFor="delivery" className="LabelOrder">Способ доставки</label>
+                    <select name="delivery" className="InputOrder" onChange = {this.changeInput}>
+                        <option value = {"pickup"}>Самовывоз</option>
+                        <option value = {"post"}>Почтой</option>
+                        <option value = {"courier"}>Курьером по Минску</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="payment" className="LabelOrder">Способ оплаты</label>
+                    <select name="payment" className="InputOrder" onChange = {this.changeInput}>
+                        <option value = {"cash"}>Наличными</option>
+                        <option value = {"card"}>Пластиковой картой</option>
+                        <option value = {"erip"}>ЕРИП</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="note" className="LabelOrder">Примечание</label>
                     <textarea name="note" className="TextareaOrder" onChange = {this.changeInput}></textarea>
                 </div>
                 <input type="button" value="Оформить заказ" className="CheckoutButton" onClick = {this.addOrder} disabled={this.state.notValidForm}></input>
@@ -215,15 +242,14 @@ class Form extends React.Component{
         )
     }
 }
-export default Form
-// const mapStateToProps = function (state) {
-//     return {
-//       // весь раздел Redux state под именем basket будет доступен
-//       // данному компоненту как this.props.basket
-//       order: state.order,
-//       basket: state.basket,
-//     };
-//   };
+const mapStateToProps = function (state) {
+    return {
+      // весь раздел Redux state под именем basket будет доступен
+      // данному компоненту как this.props.basket
+      order: state.order,
+      basket: state.basket,
+    };
+  };
   
-//   export default withRouter(connect(mapStateToProps)(Order));
-//   // экспортируем не этот класс CounterButton а уже обвернутый
+  export default withRouter(connect(mapStateToProps)(Order));
+  // экспортируем не этот класс CounterButton а уже обвернутый

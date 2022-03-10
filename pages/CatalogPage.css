@@ -1,0 +1,7 @@
+.CatalogPage{
+    padding: 15px;
+    background-color: #fff;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}

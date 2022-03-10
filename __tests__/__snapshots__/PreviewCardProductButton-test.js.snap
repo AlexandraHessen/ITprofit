@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PreviewCardProduct 1`] = `
+<div
+  className="PreviewCardProduct"
+>
+  <a
+    aria-current={false}
+    className={undefined}
+    href="/catalog/1/1"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <img
+      className="PlantImg"
+      src="/img/img_9241_1.jpg"
+    />
+  </a>
+  <a
+    aria-current={false}
+    className={undefined}
+    href="/catalog/1/1"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <p
+      className="NameProduct"
+    >
+      Замиокулькас
+    </p>
+  </a>
+  <div>
+    <h4
+      className="Price"
+    >
+      265
+       руб.
+    </h4>
+    <a
+      aria-current={false}
+      className={undefined}
+      href="/basket"
+      onClick={[Function]}
+      style={undefined}
+    >
+      <button
+        className="ButtonToBasket"
+        onClick={[Function]}
+        type="button"
+      >
+        <i
+          className="fas fa-shopping-cart"
+        />
+      </button>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`PreviewCardProduct 2`] = `
+<div
+  className="PreviewCardProduct"
+>
+  <a
+    aria-current={false}
+    className={undefined}
+    href="/catalog/1/1"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <img
+      className="PlantImg"
+      src="/img/img_9241_1.jpg"
+    />
+  </a>
+  <a
+    aria-current={false}
+    className={undefined}
+    href="/catalog/1/1"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <p
+      className="NameProduct"
+    >
+      Замиокулькас
+    </p>
+  </a>
+  <div>
+    <h4
+      className="Price"
+    >
+      265
+       руб.
+    </h4>
+    <a
+      aria-current={false}
+      className={undefined}
+      href="/basket"
+      onClick={[Function]}
+      style={undefined}
+    >
+      <button
+        className="ButtonToBasket"
+        onClick={[Function]}
+        type="button"
+      >
+        <i
+          className="fas fa-shopping-cart"
+        />
+      </button>
+    </a>
+  </div>
+</div>
+`;

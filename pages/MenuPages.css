@@ -1,0 +1,27 @@
+.MenuPages{
+    font-size: 1.25em;
+    font-weight: bold;
+    list-style-type: none;
+
+}
+.MenuPages .PageLink{
+    text-decoration: none;
+    padding: 10px;
+    color: #fff
+}
+
+.ActivePageLink {
+    background: #57ad26;;
+    border-radius: 5px;
+
+}
+
+@media all and (max-width: 500px){
+    .MenuPages .PageLink{
+        padding: 5px;
+    }
+
+    .MenuPages{
+        font-size: 1.15em;
+    }
+}

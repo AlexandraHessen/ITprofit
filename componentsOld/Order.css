@@ -1,0 +1,140 @@
+.Order{
+    background-color: #e6f7dd;
+    padding: 20px;
+}
+
+/* .OrderMade{
+    background-color: #e6f7dd;
+    padding: 20px;
+    border-radius: 40px;
+    border: solid 2px #8ccb67;
+    text-align: center;
+} */
+
+.LabelOrder{
+    /* font-weight: bold; */
+    /* margin: 20px; */
+}
+
+.InputOrder{
+    display: block;
+    width: 30%;
+    height: 40px;
+    padding: 10px;
+    font-size: 14px;
+    font-family: 'Rubik', sans-serif;
+    line-height: 1.428571429;
+    color:  #363636;
+    vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #fff;
+    border-radius: 40px;
+    /* margin:  0 0 20px 20px; */
+    margin-bottom: 20px;
+    font-weight: bold;
+   
+}
+
+.InputOrder:focus, .TextareaOrder:focus{
+    outline: 0;
+}
+
+input::placeholder {
+    font-weight: normal;
+    color: #969696;
+  }
+
+/* @-webkit-keyframes autofill {
+    to {
+      color: inherit;
+      background: #fff;
+    }
+  }
+  
+  input:-internal-autofill-selected {
+    -internal-animation-name: autofill;
+    -internal-animation-fill-mode: both;
+  } */
+
+  input {outline: none;}
+input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0 50px #fff !important; 
+} 
+
+.TextareaOrder{
+    display: block;
+    height: auto;
+    width: 50%;
+    height: 40px;
+    padding: 10px;
+    font-size: 14px;
+    font-family: 'Rubik', sans-serif;
+    line-height: 1.428571429;
+    color:  #363636;
+    vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #fff;
+    border-radius: 40px;
+    margin-bottom: 20px;
+    resize: none;
+    font-weight: bold;
+}
+
+.CheckoutButton{
+    border: solid 2px #8ccb68;
+    font-family: 'Rubik', sans-serif;
+    color:  #363636;
+    background-color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+    border-radius: 40px;
+    padding: 16px 25px;
+    font-weight: bold;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    cursor: pointer;
+    /* outline: none !important; */
+    /* border: solid 2px #8ccb68;
+    padding: 8px 13px;
+    border-radius: 40px;
+    cursor: pointer;
+    position: relative;
+    background-color: #f9f9f9;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    margin-bottom: 25px; */
+    /* display: block;
+    margin-left: auto;
+    margin-right: 0; */
+}
+
+.Error{
+    color:red
+}
+
+input[type="button"]:disabled{
+    cursor: not-allowed;
+    color: #c6c6c6;
+    border: solid 2px #c6c6c6;
+    /* background: currentColor; */
+    background-color: #f9f9f9;
+ }
+
+ input:-internal-autofill-selected{
+    background-color: -internal-light-dark(#fff, rgba(50, 185, 8, 0.4)) !important;
+ }
+
+ @media all and (max-width: 500px){
+    .InputOrder{
+        width: 100%;
+    }
+
+    .TextareaOrder{
+        width: 100%;
+    }
+
+}
+ 

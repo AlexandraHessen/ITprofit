@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Catalog 1`] = `
+<div>
+  <table
+    className="TableBasket"
+  >
+    <tbody>
+      <tr
+        className="TableHeader"
+      >
+        <th>
+          Товар
+        </th>
+        <th />
+        <th
+          className="priceTh"
+        >
+          Цена
+        </th>
+        <th />
+      </tr>
+    </tbody>
+  </table>
+  <div
+    className="Total"
+  >
+    Итого:
+    <div
+      className="SumProductsInBasket"
+    >
+      0
+       руб.
+    </div>
+  </div>
+  <div
+    className="ActionsBasket"
+  >
+    <input
+      className="BasketButtons"
+      onClick={[Function]}
+      type="button"
+      value="Очистить корзину"
+    />
+    <input
+      className="BasketButtons"
+      onClick={[Function]}
+      type="button"
+      value="Оформить заказ"
+    />
+  </div>
+</div>
+`;

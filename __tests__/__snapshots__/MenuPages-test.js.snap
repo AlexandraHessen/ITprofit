@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuPages 1`] = `
+<ul
+  className="MenuPages"
+>
+  <li>
+    <a
+      aria-current={false}
+      className="PageLink"
+      href="/"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Главная
+    </a>
+  </li>
+  <li>
+    <a
+      aria-current={false}
+      className="PageLink"
+      href="/catalog/1"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Каталог
+    </a>
+  </li>
+  <li>
+    <a
+      aria-current={false}
+      className="PageLink"
+      href="/contacts"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Контакты
+    </a>
+  </li>
+  <li>
+    <a
+      aria-current={false}
+      className="PageLink"
+      href="/basket"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Корзина
+    </a>
+  </li>
+</ul>
+`;

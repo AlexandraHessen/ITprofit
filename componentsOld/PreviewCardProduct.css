@@ -1,0 +1,65 @@
+.PreviewCardProduct{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    padding: 20px;
+}
+.PreviewCardProduct > a{
+    text-align: center;
+    text-decoration: none;
+    color: #363636;
+
+}
+.PreviewCardProduct .NameProduct{
+    margin: 5px 0;
+    height: 35px;
+}
+
+
+.PreviewCardProduct .PlantImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.PreviewCardProduct .Price{
+    font-weight: bold;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.PreviewCardProduct .fa-shopping-cart{
+    color: #8ccb68;
+}
+
+.PreviewCardProduct .ButtonToBasket{
+    border: solid 2px #8ccb68;
+    font-size: 17px;
+    margin-left: 10px;
+    padding: 8px 13px;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+
+}
+
+@media all and (max-width: 790px) {
+    .PreviewCardProduct{
+        width: 33%;
+    }
+
+    .PreviewCardProduct .ButtonToBasket{
+        padding: 6px 10px;
+    }
+}
+
+@media all and (max-width: 550px){
+    .PreviewCardProduct{
+        width: 50%;
+    }
+
+    .PreviewCardProduct .NameProduct{
+        height: 20px;
+    }
+}

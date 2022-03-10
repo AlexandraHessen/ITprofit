@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BasketShowCount  1`] = `
+<a
+  aria-current={false}
+  className="BasketShowCount"
+  href="/basket"
+  onClick={[Function]}
+  style={undefined}
+>
+  <button
+    className="ButtonToBasket"
+    type="button"
+  >
+    <i
+      className="fas fa-shopping-cart"
+    />
+    <div
+      className="CountProductsInBasket"
+    >
+      0
+    </div>
+  </button>
+</a>
+`;
