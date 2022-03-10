@@ -9,24 +9,20 @@ import './Form.css'
 class Form extends React.Component{
     state={
         name: '',
-        surname: '',
-        tel: '',
         email: '',
-        delivery: 'pickup',
-        payment: 'cash',
+        tel: '',
         note: '',
 
         nameNotValid: false,    // когда ошибка = true отображается  <span> с ошибкой  (логич выражение) && JSX
-        surnameNotValid: false,
         telNotValid: false,
         emailNotValid: false,
 
         notValidForm: false, // когда вся форма не валидна = true, т.к. buttonSave должен быть disabled= true
 
         nameError: 'Поле "Имя" обязательно для заполнения!',
-        surnameError: 'Поле "Фамилия" обязательно для заполнения!',
-        telError: 'Поле "Телефон" обязательно для заполнения. Введите корректный телефон!',
         emailError: 'Поле "E-mail" обязательно для заполнения. Введите корректный E-mail!',
+        telError: 'Поле "Телефон" обязательно для заполнения. Введите корректный телефон!',
+
 
         isNeedToWarn: false
     }
