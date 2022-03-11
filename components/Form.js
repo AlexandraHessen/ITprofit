@@ -4,6 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import InputMask from 'react-input-mask';
 
+import { checkNameValue, checkEmailValue, checkTelValue, checkMessageValue  } from '../services/checkForm';
+
 import './Form.css'
 
 class Form extends React.Component{
@@ -11,21 +13,96 @@ class Form extends React.Component{
         name: '',
         email: '',
         tel: '',
-        note: '',
+        message: '',
 
-        nameNotValid: false,    // когда ошибка = true отображается  <span> с ошибкой  (логич выражение) && JSX
-        telNotValid: false,
-        emailNotValid: false,
-
-        notValidForm: false, // когда вся форма не валидна = true, т.к. buttonSave должен быть disabled= true
-
-        nameError: 'Поле "Имя" обязательно для заполнения!',
-        emailError: 'Поле "E-mail" обязательно для заполнения. Введите корректный E-mail!',
-        telError: 'Поле "Телефон" обязательно для заполнения. Введите корректный телефон!',
+        // nameNotValid: false,    // когда ошибка = true отображается  <span> с ошибкой  (логич выражение) && JSX
+        // telNotValid: false,
+        // emailNotValid: false,
 
 
-        isNeedToWarn: false
+        errorName: 0, //0-нет ошибки, 1-пустое значение, 2-неверное значение
+        errorEmail: 0, //0-нет ошибки, 1-нет ошибки (email не обязателен), 2-неверное значение
+        errorTel: 0, //0-нет ошибки, 1-пустое значение, 2-неверное значение
+        errorMessage: 0, //0-нет ошибки, 1-пустое значение, 2-неверное значение
+
+        // notValidForm: false, // когда вся форма не валидна = true, т.к. buttonSave должен быть disabled= true
+
+        emptyValueError: '* Поле обязательно для заполнения!',
+        emailError: '* Некорректный E-mail!',
+
+        // nameError: 'Поле "Имя" обязательно для заполнения!', * Некорректный email!
+        // emailError: 'Поле "E-mail" обязательно для заполнения. Введите корректный E-mail!',
+        // telError: 'Поле "Телефон" обязательно для заполнения. Введите корректный телефон!',
+
+
+        // isNeedToWarn: false
     }
+
+    changeName = (e)=> {
+        this.setState( {name: e.target.value, errorName: 0} );
+      };
+    checkName = () => {
+        let check = checkNameValue(this.state.name);
+        this.setState( {errorName: check} );
+        return check;
+      };
+
+      changeEmail = (e)=> {
+        this.setState( {email: e.target.value, errorEmail: 0} );
+      };
+      checkEmail = () => {
+        let check = checkEmailValue(this.state.email);
+        this.setState( {errorEmail: check} );
+        return check;
+      };
+    
+      changeTel = (e)=> {
+        this.setState( {tel: e.target.value, errorTel: 0} );
+      };
+
+      checkTel = () => {
+        let telValue=(this.state.tel==="+375 (__) ___-__-__")?'':this.state.tel
+        let check = checkTelValue(telValue);
+        this.setState( {errorTel: check} );
+        return check;
+      };
+
+      changeMessage = (e)=> {
+        this.setState( {message: e.target.value, errorMessage: 0} );
+      };
+      checkMessage = () => {
+        let check = checkMessageValue(this.state.message);
+        this.setState( {errorMessage: check} );
+        return check;
+      };
+
+      checkForm = (e) => {
+        let checkNameBeforeSend = this.checkName();
+        let checkEmailBeforeSend = this.checkEmail();
+        let checkTelBeforeSend = this.checkTel();
+        let checkMessageBeforeSend = this.checkMessage();
+
+        if(  checkNameBeforeSend!==0  
+          || checkEmailBeforeSend!==0
+          || checkTelBeforeSend!==0
+          || checkMessageBeforeSend!==0) {
+          e.preventDefault();
+        }
+        else{
+          this.clearCart();
+          alert("Заказ сформирован!");
+        }
+      }
+
+      clearCart=()=>{
+          this.state.name='';
+          this.state.email='';
+          this.state.tel='';
+          this.state.note='';
+      }
+
+
+      
 
     warn=()=>{
         this.setState({isNeedToWarn: true})
@@ -35,6 +112,8 @@ class Form extends React.Component{
         this.setState({[EO.target.name]: EO.target.value}, this.warn)
         // plantsEvents.emit('EvNeedToWarn', true);
     }
+
+
 
     validate = (EO) =>{
         // ----------------------- ВАЛИДАЦИЯ ВСЕХ ПОЛЕЙ ПРИ УХОДЕ С 1 ПОЛЯ-----------------------//
@@ -86,7 +165,7 @@ class Form extends React.Component{
             email: this.state.email,
             delivery: this.state.delivery,
             payment: this.state.payment,
-            note: this.state.note,
+            message: this.state.message,
         };
         let password=Math.random();
 
@@ -188,25 +267,26 @@ class Form extends React.Component{
                 <h1>Оформление заказа:</h1>
                 <div>
                     <label htmlFor="name" className="LabelOrder">Имя</label>
-                    <input type="text" name="name" className="InputOrder" onChange={this.changeInput} onBlur={this.validate} autoFocus></input>
-                    {(this.state.nameNotValid)&&<span className="Error">{this.state.nameError}</span>} 
+                    <input type="text" name="name" className="InputOrder" onChange = {this.changeName} onBlur = {this.checkName}></input>
+                    <span className = {this.state.errorName == 1 ? "visible" : "invisible"}>{this.state.emptyValueError}</span>
                 </div>
                 <div>
                     <label htmlFor="email" className="LabelOrder">Email</label>
-                    <input type="email" name="email" className="InputOrder" placeholder="email@gmail.com"onChange={this.changeInput} onBlur={this.validate}></input>
-                    {(this.state.emailNotValid)&&<span className="Error">{this.state.emailError}</span>} 
+                    <input type="email" name="email" className="InputOrder" placeholder="email@gmail.com" onChange = {this.changeEmail} onBlur = {this.checkEmail}></input>
+                    <span className = {this.state.errorEmail == 1 ? "visible" : "invisible"}>{this.state.emptyValueError}</span>
+                    <span className = {this.state.errorEmail == 2 ? "visible" : "invisible"}>{this.state.emailError}</span>
                 </div>
                 <div>
                     <label htmlFor="tel" className="LabelOrder">Телефон</label>
-                    {/* <input type="text" name="tel" className="InputOrder" placeholder="+37529111-22-33" onChange={this.changeInput} onBlur={this.validate}></input> */}
-                    <InputMask {...this.props} mask="+375 99 999 99 99" type="text" name="tel" className="InputOrder"  onChange={this.changeInput} onBlur={this.validate}></InputMask>
-                    {(this.state.telNotValid)&&<span className="Error">{this.state.telError}</span>} 
+                    <InputMask {...this.props} mask="+375 (99) 999-99-99" type="text" name="tel" className="InputOrder"  onChange = {this.changeTel} onBlur = {this.checkTel}></InputMask>
+                    <span className = {this.state.errorTel == 1 ? "visible" : "invisible"}> {this.state.emptyValueError}</span>
                 </div>
                 <div>
-                    <label htmlFor="note" className="LabelOrder">Сообщение</label>
-                    <textarea name="note" className="TextareaOrder" onChange = {this.changeInput}></textarea>
+                    <label htmlFor="message" className="LabelOrder">Сообщение</label>
+                    <textarea name="message" className="TextareaOrder" onChange = {this.changeMessage} onBlur = {this.checkMessage}></textarea>
+                    <span className = {this.state.errorMessage == 1 ? "visible" : "invisible"}> {this.state.emptyValueError}</span>
                 </div>
-                <input type="button" value="Оформить заказ" className="CheckoutButton" onClick = {this.addOrder} disabled={this.state.notValidForm}></input>
+                <input type="button" value="Оформить заказ" className="CheckoutButton" onClick = {this.checkForm} disabled={this.state.notValidForm}></input>
             </div>
         )
     }
