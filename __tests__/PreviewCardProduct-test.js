@@ -1,14 +1,14 @@
 "use strict";
 
-import React from 'react';
-import renderer from 'react-test-renderer';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import renderer from "react-test-renderer";
+import { BrowserRouter } from "react-router-dom";
 
-import { createStore } from 'redux';
-import combinedReducer from '../redux/reducers.js';
-import { Provider } from 'react-redux';
+import { createStore } from "redux";
+import combinedReducer from "../redux/reducers.js";
+import { Provider } from "react-redux";
 
-import PreviewCardProduct from '../components/PreviewCardProduct';
+import PreviewCardProduct from "../components/PreviewCardProduct";
                     //импортируем файл который будем тестировать
 
 let info = 	{
@@ -23,7 +23,7 @@ let info = 	{
 let pageNumber=1
 let store=createStore(combinedReducer);
 
-test('PreviewCardProduct', () => {
+test("PreviewCardProduct", () => {
                             // создаём тестовую версию компонента который будем тестировать
   const component = renderer.create(
         <Provider store={store}>

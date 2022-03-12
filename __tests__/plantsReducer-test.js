@@ -9,7 +9,7 @@ let data = 	{
     "imgUrl": "/img/img_9241_1.jpg"
 }
 
-test('работа plantsReducer', () => {
+test("работа plantsReducer", () => {
     let state = {};
     state = plantsReducer(state, { type: "PLANTS_LOADING"});
     expect(state).toEqual({"data": null, "status": 1});

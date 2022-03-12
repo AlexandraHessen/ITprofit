@@ -1,19 +1,19 @@
 "use strict";
 
-import React from 'react';
-import renderer from 'react-test-renderer';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import renderer from "react-test-renderer";
+import { BrowserRouter } from "react-router-dom";
 
-import { createStore } from 'redux';
-import combinedReducer from '../redux/reducers.js';
-import { Provider } from 'react-redux';
+import { createStore } from "redux";
+import combinedReducer from "../redux/reducers.js";
+import { Provider } from "react-redux";
 
-import Header from '../components/Header';
+import Header from "../components/Header";
                     //импортируем файл который будем тестировать
 
 let store=createStore(combinedReducer);
 
-test('Header', () => {
+test("Header", () => {
                             // создаём тестовую версию компонента который будем тестировать
                             const component = renderer.create(
     <Provider store={store}>

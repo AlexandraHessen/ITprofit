@@ -2,7 +2,7 @@ import {
     add_product, ADD_PRODUCT,
     del_product, DEL_PRODUCT,
     clear_basket, CLEAR_BASKET,
-} from '../redux/basketAC';
+} from "../redux/basketAC";
 
 let info = 	{
     "code": 1,
@@ -13,7 +13,7 @@ let info = 	{
     "imgUrl": "/img/img_9241_1.jpg"
 }
 
-test('работа basketAC', () => {
+test("работа basketAC", () => {
     let addPlant = add_product(1, info);
     expect(addPlant).toEqual({ type: ADD_PRODUCT, productId: 1, objProductInfo: info });
 

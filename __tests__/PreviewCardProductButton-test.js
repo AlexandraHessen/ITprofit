@@ -1,15 +1,15 @@
 "use strict";
 
-import React from 'react';
-import renderer from 'react-test-renderer';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import renderer from "react-test-renderer";
+import { BrowserRouter } from "react-router-dom";
 
-import { createStore } from 'redux';
-import combinedReducer from '../redux/reducers.js';
-import { Provider } from 'react-redux';
-import {add_product} from '../redux/basketAC'
+import { createStore } from "redux";
+import combinedReducer from "../redux/reducers.js";
+import { Provider } from "react-redux";
+import {add_product} from "../redux/basketAC"
 
-import PreviewCardProduct from '../components/PreviewCardProduct';
+import PreviewCardProduct from "../components/PreviewCardProduct";
                     //импортируем файл который будем тестировать
 
 let info = 	{
@@ -24,7 +24,7 @@ let info = 	{
 let pageNumber=1
 let store=createStore(combinedReducer);
 
-test('PreviewCardProduct', () => {
+test("PreviewCardProduct", () => {
                             // создаём тестовую версию компонента который будем тестировать
   const component = renderer.create( //с нужными данными для построения
         <Provider store={store}>
@@ -40,7 +40,7 @@ test('PreviewCardProduct', () => {
 
                             // найдём в вёрстке компонента саму кнопку
                             // в верстке <input type="button" value="Все" onClick={this.allClients}/>
-                            const buttonAddProductToBasket = component.root.find( el => el.type=='button'); 
+                            const buttonAddProductToBasket = component.root.find( el => el.type=="button"); 
                             // нажимаем на кнопку
     buttonAddProductToBasket.props.onClick();
 

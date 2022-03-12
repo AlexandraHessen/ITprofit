@@ -9,7 +9,7 @@ let info = 	{
     "imgUrl": "/img/img_9241_1.jpg"
 }
 
-test('работа basketReducer', () => {
+test("работа basketReducer", () => {
     let state = {};
     state = basketReducer(state, { type: "ADD_PRODUCT", productId: "1", objProductInfo: info });
     expect(state).toEqual({productsInBasket: {"1": info}});

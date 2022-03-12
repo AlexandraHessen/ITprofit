@@ -1,11 +1,11 @@
 import {
     add_order, ADD_ORDER,
-} from '../redux/orderAC';
+} from "../redux/orderAC";
 
 let customerInfo = {
     "name":"Jane",
     "surname":"Smith",
-    "tel":"+375293186265",
+    "phone":"+375293186265",
     "email":"jaane.smith1983@gmail.com",
     "delivery":"pickup",
     "payment":"cash",
@@ -20,7 +20,7 @@ let orderInfo = 	{
     "imgUrl": "/img/img_9241_1.jpg"
 }
 
-test('работа orderAC', () => {
+test("работа orderAC", () => {
     let addOrder = add_order(customerInfo, orderInfo);
     expect(addOrder).toEqual({ type: ADD_ORDER, objCustomerInfo: customerInfo, objOrderInfo: orderInfo });
 

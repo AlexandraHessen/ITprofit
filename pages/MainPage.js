@@ -1,52 +1,33 @@
-﻿import React from 'react';
-import { Provider } from 'react-redux'; //оборачиваем все приложение теги
-import { createStore } from 'redux'; // создаем store и привязываем его к Reducer
-import { BrowserRouter } from 'react-router-dom';
+﻿"use strict";
 
-import combinedReducer from '../redux/reducers.js'; //combinedReducer файл со всеми Reducer
+import React from "react";
+import Form from "../components/Form"
+import ModalWindow from "../components/ModalWindow"
 
-import Header from '../components/Header'
-import CategoryMenu from '../components/CategoryMenu'
-import RouterPages from './RouterPages'
-import Footer from '../components/Footer'
+import "./MainPage.scss"
 
-import './MainPage.css'
+class MainPage extends React.Component {
 
-const persistedState = localStorage.getItem('reduxState') 
-                      ? JSON.parse(localStorage.getItem('reduxState'))
-                      : {}
+  state={
+    isShowInfo: false
+  }
 
-let store=createStore(combinedReducer, persistedState); // Redux создай store которым управляет этот reducer - combinedReducer(который в себе объединяет все reduserы)
-
-store.subscribe(()=>{
-  localStorage.setItem('reduxState', JSON.stringify(store.getState()))
-})
-
-class MainPage extends React.PureComponent {
+  showInfo=(value)=>{
+    this.setState( {isShowInfo: value} );
+  }
 
   render() {
     return (
-      <Provider store={store}>
-                      {/* Provider - import { Provider } from 'react-redux'; 
-                      всё свое приложения мы заварачиваем в tag Provider
-                      тег Provider говорит, что для всего кода, который внутри будет работать Redux с хранилищем store
-                      */}
-        <BrowserRouter>
-          <div className="MainPage">
-            <Header />
+    <div className="MainPage">
+          <Form />
+          <input type="button" value="Информация" className="InfoButton" onClick = {() => this.showInfo(true)}></input>
+          {
+            (this.state.isShowInfo) &&
+            <ModalWindow cbShowInfo={this.showInfo}/>
+          }
+          
+    </div>
 
-            <main className="Main_Container">
-              <div className="Nav_Section">
-              </div>
-              <div className="Content">
-                <RouterPages/>
-              </div>
-            </main>
-
-            <Footer />
-          </div>
-        </BrowserRouter>
-      </Provider>
     );
   }
 }

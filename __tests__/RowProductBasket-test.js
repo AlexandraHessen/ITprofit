@@ -1,14 +1,14 @@
 "use strict";
 
-import React from 'react';
-import renderer from 'react-test-renderer';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import renderer from "react-test-renderer";
+import { BrowserRouter } from "react-router-dom";
 
-import { createStore } from 'redux';
-import combinedReducer from '../redux/reducers.js';
-import { Provider } from 'react-redux';
+import { createStore } from "redux";
+import combinedReducer from "../redux/reducers.js";
+import { Provider } from "react-redux";
 
-import RowProductBasket  from '../components/RowProductBasket ';
+import RowProductBasket  from "../components/RowProductBasket ";
                     //импортируем файл который будем тестировать
 
 let info = 	{
@@ -24,7 +24,7 @@ let plantId=1
 
 let store=createStore(combinedReducer);
 
-test('RowProductBasket ', () => {
+test("RowProductBasket ", () => {
                             // создаём тестовую версию компонента который будем тестировать
   const component = renderer.create(
   <Provider store={store}>

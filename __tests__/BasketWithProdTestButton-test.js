@@ -1,15 +1,15 @@
 "use strict";
 
-import React from 'react';
-import renderer from 'react-test-renderer';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import renderer from "react-test-renderer";
+import { BrowserRouter } from "react-router-dom";
 
-import { createStore } from 'redux';
-import combinedReducer from '../redux/reducers.js';
-import { Provider } from 'react-redux';
-import {add_product, clear_basket} from '../redux/basketAC';
+import { createStore } from "redux";
+import combinedReducer from "../redux/reducers.js";
+import { Provider } from "react-redux";
+import {add_product, clear_basket} from "../redux/basketAC";
 
-import Basket  from '../components/Basket';
+import Basket  from "../components/Basket";
                     //импортируем файл который будем тестировать
 
 let info = 	{
@@ -25,7 +25,7 @@ let store=createStore(combinedReducer);
 store.dispatch(add_product(info.code,info));
 expect(Object.keys(store.getState().basket.productsInBasket).length).toBe(1); 
 
-test('BasketWithProdTestButton', () => {
+test("BasketWithProdTestButton", () => {
                             // создаём тестовую версию компонента который будем тестировать
   const component = renderer.create(
   <Provider store={store}>
@@ -42,7 +42,7 @@ test('BasketWithProdTestButton', () => {
   
                               // найдём в вёрстке компонента саму кнопку
                               // в верстке <input type="button" value="Очистить корзину" className="BasketButtons" onClick = {this.clearBasket}></input>
-                              const buttonAddProductToBasket = component.root.find( el => el.type=='input' && el.props.value == 'Очистить корзину'); 
+                              const buttonAddProductToBasket = component.root.find( el => el.type=="input" && el.props.value == "Очистить корзину"); 
                               // нажимаем на кнопку
       buttonAddProductToBasket.props.onClick();
   

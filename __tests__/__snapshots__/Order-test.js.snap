@@ -41,13 +41,13 @@ exports[`Order 1`] = `
   <div>
     <label
       className="LabelOrder"
-      htmlFor="tel"
+      htmlFor="phone"
     >
       Телефон
     </label>
     <input
       className="InputOrder"
-      name="tel"
+      name="phone"
       onBlur={[Function]}
       onChange={[Function]}
       placeholder="+37529111-22-33"

@@ -1,12 +1,12 @@
 ﻿"use strict";
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import MainPage from './components/MainPage';
+import MainPage from "./pages/MainPage";
 
   ReactDOM.render(
         <MainPage />
-    , document.getElementById('container') 
+    , document.getElementById("container") 
   );
   

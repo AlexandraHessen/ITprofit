@@ -1,8 +1,8 @@
-﻿import Config from 'webpack-config';
+﻿import Config from "webpack-config";
 
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
-const path = require('path');
+const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const ExtractSass = new ExtractTextPlugin({
   filename: "[name].[contenthash].css",
@@ -14,12 +14,12 @@ const extractLess = new ExtractTextPlugin({
 });
 
 export default new Config().merge({
-  entry: ["babel-polyfill",'./App.js'],
+  entry: ["babel-polyfill","./App.js"],
   output: {
-    path: __dirname + '/public',
-    publicPath:'/',
+    path: __dirname + "/public",
+    publicPath:"/",
   },
-  devtool:'source-map',
+  devtool:"source-map",
   module: {
         rules:[
             { 
@@ -28,7 +28,7 @@ export default new Config().merge({
                 use: { 
                   loader: "babel-loader",
                   options: {
-                    presets: [['env', {modules: false}], 'stage-0', 'react']
+                    presets: [["env", {modules: false}], "stage-0", "react"]
                   },
                 },
             },
@@ -67,9 +67,9 @@ export default new Config().merge({
               use: [{
                 loader: "file-loader",
                 options: {
-                  context: './src',
+                  context: "./src",
                   useRelativePath: true,
-                  name: '[name].[ext]'
+                  name: "[name].[ext]"
                 }
               }]
             }
@@ -78,7 +78,7 @@ export default new Config().merge({
   plugins: [
     new ExtractTextPlugin("[name].bundle.[hash].css"),
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: "./index.html",
       inject: "body"
     })]
 });

@@ -2,7 +2,7 @@ import {
     plantsLoadingAC,PLANTS_LOADING,
     plantsErrorAC,PLANTS_ERROR,
     plantsSetAC,PLANTS_SET,
-} from '../redux/plantsAC';
+} from "../redux/plantsAC";
 
 let data = 	{
     "code": 1,
@@ -13,7 +13,7 @@ let data = 	{
     "imgUrl": "/img/img_9241_1.jpg"
 }
 
-test('работа plantsAC', () => {
+test("работа plantsAC", () => {
     let plantsLoad = plantsLoadingAC();
     expect(plantsLoad).toEqual({ type: PLANTS_LOADING});
 

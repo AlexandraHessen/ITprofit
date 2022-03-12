@@ -19,8 +19,8 @@ const checkEmailValue = function(email) {
 
 }
 
-const checkTelValue = function(tel) {
-    if(!tel) return 1
+const checkTelValue = function(phone) {
+    if(!phone) return 1
     
     return 0
 

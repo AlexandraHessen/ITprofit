@@ -3,7 +3,7 @@ import orderReducer from "../redux/orderReducer"
 let objOrderInfo = {
     "name":"Jane",
     "surname":"Smith",
-    "tel":"+375293186265",
+    "phone":"+375293186265",
     "email":"jaane.smith1983@gmail.com",
     "delivery":"pickup",
     "payment":"cash",
@@ -18,7 +18,7 @@ let objCustomerInfo = 	{
     "imgUrl": "/img/img_9241_1.jpg"
 }
 
-test('работа orderReducer', () => {
+test("работа orderReducer", () => {
     let state = {};
     state = {orders: []};
     state = orderReducer(state, { type: "ADD_ORDER", "objCustomerInfo": objCustomerInfo, "objOrderInfo": objOrderInfo });

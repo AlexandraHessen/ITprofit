@@ -1,13 +1,13 @@
 "use strict";
 
-import React from 'react';
-import renderer from 'react-test-renderer';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import renderer from "react-test-renderer";
+import { BrowserRouter } from "react-router-dom";
 
-import Footer from '../components/Footer';
+import Footer from "../components/Footer";
                     //импортируем файл который будем тестировать
 
-test('Footer', () => {
+test("Footer", () => {
                             // создаём тестовую версию компонента который будем тестировать
   const component = renderer.create(
     <BrowserRouter>

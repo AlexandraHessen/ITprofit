@@ -1,13 +1,13 @@
 "use strict";
 
-import React from 'react';
-import renderer from 'react-test-renderer';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import renderer from "react-test-renderer";
+import { BrowserRouter } from "react-router-dom";
 
-import MenuPages from '../pages/MenuPages';
+import MenuPages from "../pages/MenuPages";
                     //импортируем файл который будем тестировать
 
-test('MenuPages', () => {
+test("MenuPages", () => {
                             // создаём тестовую версию компонента который будем тестировать
   const component = renderer.create(
     <BrowserRouter>
