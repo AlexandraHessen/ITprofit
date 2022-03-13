@@ -4,7 +4,7 @@ import React from "react";
 import Form from "../components/Form"
 import ModalWindow from "../components/ModalWindow"
 
-import "./MainPage.scss"
+import "./MainPage.sass"
 
 class MainPage extends React.Component {
 

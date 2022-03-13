@@ -3,7 +3,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "./ModalWindow.scss"
+import "./ModalWindow.sass"
 
 class ModalWindow extends React.Component{
 
@@ -16,11 +16,11 @@ class ModalWindow extends React.Component{
     }
 
     componentDidMount() {    
-        document.body.style.overflow = "hidden"; 
+        document.body.classList.add('bodyModalWindow');
     }
 
     componentWillUnmount() {
-        document.body.style.overflow = "unset";
+        document.body.classList.add('bodyModalWindow');
     }
 
     render(){
