@@ -1,3 +1,7 @@
+$textColor: #363636
+$borderColor: #8ccb68
+    
+    
 .modelOverlay
     position: fixed   // фиксированное положение 
     top: 0
@@ -42,14 +46,15 @@
             
 
             .modelButton
-                border: solid 2px #8ccb68
-                color:  #363636
+                border: solid 2px $borderColor
+                border-radius: 10px
+                color:  $textColor
                 background-color: #fff
                 text-transform: uppercase
-                font-size: 12px
-                border-radius: 10px
+                font:
+                    size: 12px
+                    weight: bold
                 padding: 10px 20px
-                font-weight: bold
                 display: block
                 margin: auto
                 margin-bottom: 20px
