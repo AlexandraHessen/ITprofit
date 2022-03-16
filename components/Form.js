@@ -187,23 +187,23 @@ class Form extends React.Component{
                 <h1>Оформление заказа:</h1>
                 <div>
                     <label htmlFor="name" className="LabelOrder">Имя</label>
-                    <input type="text" name="name" value={this.state.name} className={(this.state.errorName==0)?"InputOrder":"InputOrder ErrorInputOrder"} onChange = {this.changeName} onBlur = {this.checkName}></input>
+                    <input type="text" name="name" value={this.state.name} className={(this.state.errorName==0)?"FieldTextOrder":"FieldTextOrder ErrorTextOrder "} onChange = {this.changeName} onBlur = {this.checkName}></input>
                     <span className = {this.state.errorName == 1 ? "ErrorTextVisible " : "ErrorTextInvisible "}>{this.state.emptyValueError}</span>
                 </div>
                 <div>
                     <label htmlFor="email" className="LabelOrder">Email</label>
-                    <input type="email" name="email" value={this.state.email} className={(this.state.errorEmail==0)?"InputOrder":"InputOrder ErrorInputOrder"} placeholder="email@gmail.com" onChange = {this.changeEmail} onBlur = {this.checkEmail}></input>
+                    <input type="email" name="email" value={this.state.email} className={(this.state.errorEmail==0)?"FieldTextOrder":"FieldTextOrder ErrorTextOrder "} placeholder="email@gmail.com" onChange = {this.changeEmail} onBlur = {this.checkEmail}></input>
                     <span className = {this.state.errorEmail == 1 ? "ErrorTextVisible" : "ErrorTextInvisible "}>{this.state.emptyValueError}</span>
                     <span className = {this.state.errorEmail == 2 ? "ErrorTextVisible" : "ErrorTextInvisible"}>{this.state.emailError}</span>
                 </div>
                 <div>
                     <label htmlFor="phone" className="LabelOrder">Телефон</label>
-                    <InputMask {...this.props} mask="+375 (99) 999-99-99" type="text" name="phone" value={this.state.phone} className={(this.state.errorPhone==0)?"InputOrder":"InputOrder ErrorInputOrder"} onChange = {this.changeTel} onBlur = {this.checkTel}></InputMask>
+                    <InputMask {...this.props} mask="+375 (99) 999-99-99" type="text" name="phone" value={this.state.phone} className={(this.state.errorPhone==0)?"FieldTextOrder":"FieldTextOrder ErrorTextOrder "} onChange = {this.changeTel} onBlur = {this.checkTel}></InputMask>
                     <span className = {this.state.errorPhone == 1 ? "ErrorTextVisible " : "ErrorTextInvisible "}> {this.state.emptyValueError}</span>
                 </div>
                 <div>
                     <label htmlFor="message" className="LabelOrder">Сообщение</label>
-                    <textarea name="message" value={this.state.message} className={(this.state.errorMessage==0)?"TextareaOrder":"TextareaOrder ErrorTextareaOrder"} onChange = {this.changeMessage} onBlur = {this.checkMessage}></textarea>
+                    <textarea name="message" value={this.state.message} className={(this.state.errorMessage==0)?"FieldTextOrder":"FieldTextOrder ErrorTextOrder "} onChange = {this.changeMessage} onBlur = {this.checkMessage}></textarea>
                     <span className = {this.state.errorMessage == 1 ? "ErrorTextVisible " : "ErrorTextInvisible "}> {this.state.emptyValueError}</span>
                 </div>
                 <input type="button" value="Оформить заказ" className="CheckoutButton" onClick = {this.checkForm} disabled={this.state.notValidForm}></input>
