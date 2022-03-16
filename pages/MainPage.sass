@@ -1,8 +1,10 @@
+$textColor: #363636
+$borderColor: #8ccb68
+  
 * 
   box-sizing: border-box
   padding: 0
   margin: 0
-
 
 
 html, body 
@@ -12,15 +14,16 @@ html, body
 
 .MainPage 
   .InfoButton
-    border: solid 2px #8ccb68
-    color:  #363636
-    background-color: #fff
+    color:  $textColor
+    font:
+      size: 12px
+      weight: bold
     text-transform: uppercase
-    font-size: 12px
+    display: block
+    background-color: #fff
+    border: solid 2px $borderColor
     border-radius: 10px
     padding: 16px 25px
-    font-weight: bold
-    display: block
     margin: auto
     margin-top: 20px
     cursor: pointer
