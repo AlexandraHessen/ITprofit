@@ -28,7 +28,7 @@ $borderColor: #8ccb68
     background-color: $backColor
     padding: 20px
 
-    .InputOrder
+    .FieldTextOrder
         +fieldText(30%, 40px)
 
         &:focus
@@ -42,17 +42,17 @@ $borderColor: #8ccb68
         &:-webkit-autofill 
             -webkit-box-shadow: inset 0 0 0 50px #fff !important 
 
-    .ErrorInputOrder
+    .ErrorTextOrder        
         +error
 
-    .TextareaOrder
+    textarea.FieldTextOrder
         resize: none
         +fieldText(50%, auto)
 
         &:focus
             outline: 0
 
-    textarea.ErrorTextareaOrder
+    textarea.ErrorTextOrder        
         +error
     
 
@@ -81,12 +81,12 @@ $borderColor: #8ccb68
 
 
 @media all and (max-width: 500px)
-    .InputOrder
-        width: 100%
-    
+    .Order
+        .FieldTextOrder
+            width: 100%
 
-    .TextareaOrder
-        width: 100%
-    
+        textarea.FieldTextOrder
+            width: 100%
+
 
 
